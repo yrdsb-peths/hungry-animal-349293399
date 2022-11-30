@@ -18,13 +18,24 @@ public class ele extends Actor
 
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-1);
+            move(-2);
         }
         else if (Greenfoot.isKeyDown("right"))
         {
-            move(1);
+            move(2);
         }
         //Remove apple if ele eats it
-        removeTouching(Apple.class);
+        eat();
+    }
+    //Eat the apple and create a new one
+    public void eat()
+    {
+        if(isTouching(Apple.class))
+        {
+            removeTouching(Apple.class);
+            MyWorld world=(MyWorld) getWorld();
+            world.createApple();
+            world.increaseScore();
+        }
     }
 }
