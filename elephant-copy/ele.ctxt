@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ele
+comment0.text=\r\n\ The\ World\ of\ the\ elephant\r\n\ \r\n\ @Daniel\ Xu\r\n\ @version\ November\ 2022\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ ele\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=2
