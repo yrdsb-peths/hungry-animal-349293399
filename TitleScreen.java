@@ -1,29 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * TitleScreen
+ * Write a description of class TitleScreen here.
  * 
- * @author Daniel 
- * @version December 2022
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class TitleScreen extends World
 {
-    Label titleLabel = new Label("The Elephant", 60);
+    public int level=1;
     /**
      * Constructor for objects of class TitleScreen.
      * 
      */
     public TitleScreen()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        //creating size+labels
+        super(800, 800, 1); 
+        Label titleLabel = new Label("Aim Game",100);
+        addObject(titleLabel,400,200);
         
+        bow bow = new bow();
         
-        addObject(titleLabel, getWidth()/2, 200);
-        prepare();
-        
+        addObject(bow, -10, -10);
     }
-    
     public void act()
     {
         if(Greenfoot.isKeyDown("space"))
@@ -31,15 +31,17 @@ public class TitleScreen extends World
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);
         }
-    }
-    
-    private void prepare()
-    {
-        ele elephant = new ele();
-        addObject(elephant, 479,87);
-
-        Label label = new Label("Use space to Start", 40);
-        addObject(label,290,255);
-        label.setLocation(303,263);
+        if(Greenfoot.isKeyDown("1"))
+        {
+            level=1;
+        }
+        if(Greenfoot.isKeyDown("2"))
+        {
+            level=2;
+        }
+        if(Greenfoot.isKeyDown("3"))
+        {
+            level=3;
+        }
     }
 }

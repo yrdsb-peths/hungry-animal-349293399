@@ -3,60 +3,61 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Daniel 
+ * @version 1.00
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    public int score=0;
-    Label scoreLabel;
-    int level=1;
-    
+    SimpleTimer TargetTimer = new SimpleTimer();
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1, false); 
+        super(800, 800, 1, false);
         
-        // Create the elepant object
-        ele elephant=new ele();
-        addObject(elephant,300,300);
-        //Create a label
-        scoreLabel = new Label(0,80);
-        addObject(scoreLabel,50,50);
+        TargetTimer.mark();
         
-        createApple();
+        bow bow = new bow();
+        
+        addObject(bow, -10, -10);
     }
-    
-    //End Game
-    
-    public void gameOver()
+    public int randomNumber(int min, int max)
     {
-        Label gameOver=new Label("Game Over",100);
-        addObject(gameOver, 300, 200);
+        int result= Greenfoot.getRandomNumber(max-min+1);
+        return result + min;
     }
-    //Increases score
-    public void increaseScore()
+    public void createTarget()
     {
-        score++;
-        scoreLabel.setValue(score);
-        
-        if(score % 5==0)
+        Target target = new Target();
+        int x=randomNumber(150, 650);
+        int y=randomNumber(150, 650);
+        addObject(target,x,y);
+    }
+    public void act(){
+        int level=1;
+        if(level==1)
         {
-            level+=1;
+            if(TargetTimer.millisElapsed() > 1500){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
+        }
+        if(level==2)
+        {
+            if(TargetTimer.millisElapsed() > 1000){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
+        }
+        if(level==3)
+        {
+            if(TargetTimer.millisElapsed() > 500){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
         }
     }
-    //Creates a new apple at random location at top of screen
-    public void createApple()
-    {
-        Apple apple =new Apple();
-        apple.setSpeed(level);
-        int x=Greenfoot.getRandomNumber(600);
-        int y=0;
-        addObject(apple,x,y);
-    }
+
+
 }
